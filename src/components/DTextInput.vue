@@ -7,6 +7,10 @@ export default {
       validator(x) {
         return ["text", "number", "textarea"].indexOf(x) > -1;
       }
+    },
+    value: {
+      type: String,
+      default: ""
     }
   },
   render(createElement) {
@@ -15,16 +19,27 @@ export default {
       element = createElement("input", {
         attrs: {
           type: this.type,
+          value: this.value,
           ...this.$attrs
+        },
+        on: {
+          input(v) {
+            this.$emit("input", v);
+          }
         }
       });
     } else {
       element = createElement(
         "textarea",
         {
-          attrs: this.$attrs
+          attrs: this.$attrs,
+          on: {
+            input(v) {
+              this.$emit("input", v);
+            }
+          }
         },
-        [this.$slots.default]
+        [this.value, this.$slots.default]
       );
     }
 

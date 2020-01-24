@@ -1,11 +1,13 @@
 import { shallowMount } from '@vue/test-utils'
-import DTextInput from '../../src/components/DInput'
+import DTextInput from '../../src/components/DTextInput'
 
 describe('tests text input field', () => {
   let wrapper = null;
   afterEach(() => {
     wrapper.destroy()
   })
+
+  // -- RENDERES -- //
 
   it("should return a text input field", () => {
     wrapper = shallowMount(DTextInput);
@@ -29,5 +31,36 @@ describe('tests text input field', () => {
     })
     expect(wrapper.contains("textarea")).toBe(true)
     expect(wrapper.contains('input')).toBe(false)
+  })
+
+  // -- VALUE EVALUATORS --//
+
+  it("should have the value of v-model in both cases", () => {
+    wrapper = shallowMount(DTextInput, {
+      propsData: {
+        value: "123"
+      }
+    })
+    expect(wrapper.vm.$el.value).toBe("123");
+  })
+
+  it("should have the value of v-model in both cases", () => {
+    wrapper = shallowMount(DTextInput, {
+      propsData: {
+        type: "number",
+        value: "123"
+      },
+    })
+    expect(wrapper.vm.$el.value).toBe("123");
+  })
+
+  it("should have the value of v-model in both cases", () => {
+    wrapper = shallowMount(DTextInput, {
+      propsData: {
+        type: "textarea",
+        value: "123"
+      }
+    })
+    expect(wrapper.text()).toBe("123");
   })
 })
