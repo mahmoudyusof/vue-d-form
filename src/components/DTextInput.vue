@@ -13,8 +13,14 @@ export default {
       default: ""
     }
   },
+  methods: {
+    emit(v) {
+      this.$emit("input", v);
+    }
+  },
   render(createElement) {
     let element = null;
+    var self = this;
     if (this.type !== "textarea") {
       element = createElement("input", {
         attrs: {
@@ -23,8 +29,8 @@ export default {
           ...this.$attrs
         },
         on: {
-          input(v) {
-            this.$emit("input", v);
+          input(e) {
+            self.$emit("input", e.target.value);
           }
         }
       });

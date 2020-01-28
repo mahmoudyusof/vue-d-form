@@ -35,7 +35,7 @@ describe('tests text input field', () => {
 
   // -- VALUE EVALUATORS --//
 
-  it("should have the value of v-model in both cases", () => {
+  it("should have the value of v-model input", () => {
     wrapper = shallowMount(DTextInput, {
       propsData: {
         value: "123"
@@ -44,17 +44,7 @@ describe('tests text input field', () => {
     expect(wrapper.vm.$el.value).toBe("123");
   })
 
-  it("should have the value of v-model in both cases", () => {
-    wrapper = shallowMount(DTextInput, {
-      propsData: {
-        type: "number",
-        value: "123"
-      },
-    })
-    expect(wrapper.vm.$el.value).toBe("123");
-  })
-
-  it("should have the value of v-model in both cases", () => {
+  it("should have the value of v-model textarea", () => {
     wrapper = shallowMount(DTextInput, {
       propsData: {
         type: "textarea",
@@ -62,5 +52,19 @@ describe('tests text input field', () => {
       }
     })
     expect(wrapper.text()).toBe("123");
+  })
+
+  // test v-model
+
+  it("should allow v-model directive usage", async () => {
+    wrapper = shallowMount(DTextInput, {
+      propsData: {
+        value: "hello"
+      }
+    })
+    const inp = wrapper.find('input')
+    inp.setValue("bye")
+    await wrapper.vm.$nextTick()
+    expect(wrapper.emitted().input[0]).toEqual(['bye']);
   })
 })
