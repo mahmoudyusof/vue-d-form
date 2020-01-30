@@ -9,6 +9,9 @@ export default {
       default: false
     }
   },
+  model: {
+    event: "change"
+  },
   render(h) {
     let element = null;
     var self = this;
@@ -20,7 +23,7 @@ export default {
       },
       on: {
         change(e) {
-          self.$emit("input", e.target.checked);
+          self.$emit("change", e.target.checked);
         }
       }
     });

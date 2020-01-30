@@ -28,7 +28,7 @@ describe("testing checkbox", () => {
     var checkbox = wrapper.findAll('input[type="checkbox"]').at(0)
     checkbox.setChecked()
     await wrapper.vm.$nextTick()
-    expect(wrapper.emitted().input[0]).toEqual([true])
+    expect(wrapper.emitted().change[0]).toEqual([true])
   })
 
 })
