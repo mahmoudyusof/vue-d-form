@@ -51,4 +51,11 @@ describe("testing rendering and functionality of select input", () => {
     expect(wrapper.emitted().change[0]).toEqual(['one'])
     expect(wrapper.element.value).toBe('one')
   })
+
+  it("should show the label if it is passed", async () => {
+    wrapper.setProps({label: "Label"})
+    await wrapper.vm.$nextTick()
+    expect(wrapper.is('div')).toBe(true)
+    expect(wrapper.find('label').text()).toBe('Label')
+  })
 })

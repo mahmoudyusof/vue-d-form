@@ -49,6 +49,9 @@ export default {
       },
       opt_elements
     );
+    if (this.label) {
+      element = h("div", [h("label", this.label), element]);
+    }
     return element;
   }
 };
