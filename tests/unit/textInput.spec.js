@@ -65,6 +65,6 @@ describe('tests text input field', () => {
     const inp = wrapper.find('input')
     inp.setValue("bye")
     await wrapper.vm.$nextTick()
-    expect(wrapper.emitted().input[0]).toEqual(['bye']);
+    expect(wrapper.emitted().input[0]).toEqual(['bye'])
   })
 })

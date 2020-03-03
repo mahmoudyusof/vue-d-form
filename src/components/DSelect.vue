@@ -18,7 +18,6 @@ export default {
   },
   render(h) {
     let opt_elements = [];
-    var self = this;
     this.options.forEach(opt => {
       opt_elements.push(
         h(
@@ -42,8 +41,8 @@ export default {
           ...this.$attrs
         },
         on: {
-          change(event) {
-            self.$emit("change", event.target.value);
+          change: e => {
+            this.$emit("change", e.target.value);
           }
         }
       },

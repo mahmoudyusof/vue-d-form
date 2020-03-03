@@ -14,7 +14,6 @@ export default {
   },
   render(h) {
     let element = null;
-    var self = this;
     element = h("input", {
       attrs: {
         type: "checkbox",
@@ -22,8 +21,8 @@ export default {
         ...this.$attrs
       },
       on: {
-        change(e) {
-          self.$emit("change", e.target.checked);
+        change: e => {
+          this.$emit("change", e.target.checked);
         }
       }
     });

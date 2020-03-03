@@ -20,7 +20,6 @@ export default {
   },
   render(createElement) {
     let element = null;
-    var self = this;
     if (this.type !== "textarea") {
       element = createElement("input", {
         attrs: {
@@ -29,8 +28,8 @@ export default {
           ...this.$attrs
         },
         on: {
-          input(e) {
-            self.$emit("input", e.target.value);
+          input: e => {
+            this.$emit("input", e.target.value);
           }
         }
       });
@@ -40,7 +39,7 @@ export default {
         {
           attrs: this.$attrs,
           on: {
-            input(v) {
+            input: v => {
               this.$emit("input", v);
             }
           }
