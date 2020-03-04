@@ -1,11 +1,14 @@
 <script>
+// this component should support all text, email, password, number and textarea fields
 export default {
   props: {
     type: {
       type: String,
       default: "text",
       validator(x) {
-        return ["text", "number", "textarea"].indexOf(x) > -1;
+        return (
+          ["text", "number", "textarea", "password", "email"].indexOf(x) > -1
+        );
       }
     },
     value: {
