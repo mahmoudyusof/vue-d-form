@@ -11,13 +11,18 @@ export default {
         },
         value: {
             default: null
+        },
+        img_preview: {
+            type: Boolean,
+            default: false
         }
     },
     model: {
         event: "change"
     },
     render(h){
-        var input = h("input", {
+        var elements = [];
+        elements.push(h("input", {
             attrs: {
                 type: "file",
                 value: this.value,
@@ -26,14 +31,22 @@ export default {
                 ...this.$attrs
             },
             on: {
-                click: (e) => {
+                change: (e) => {
                     this.$emit("change", e)
+                    if(this.img_preview){
+                        var img = this.$refs.img;
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            img.setAttribute("src", e.target.result)
+                        }
+                        reader.readAsDataURL(this.$refs.input.files[0])
+                    }  
                 }
             },
             ref: "input"
-        })
+        }));
 
-        var btn = h("button", {
+        elements.push(h("button", {
             attrs:{
                 ...this.$attrs,
             },
@@ -42,9 +55,18 @@ export default {
                     this.$refs.input.click()
                 }
             },
-        }, [this.label])
+        }, [this.label]))
 
-        return h("div", [btn, input])
+        if(this.img_preview == true){
+            elements.push(h("img", {
+                ref: "img",
+                attrs: {
+                    src: ""
+                }
+            }))
+        }
+
+        return h("div", elements)
     }
 }
 </script>
