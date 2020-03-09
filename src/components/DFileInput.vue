@@ -39,8 +39,8 @@ export default {
                         reader.onload = (e) => {
                             img.setAttribute("src", e.target.result)
                         }
-                        reader.readAsDataURL(this.$refs.input.files[0])
-                    }  
+                        reader.readAsDataURL(this.$refs.input.files[0] || new Blob([""], {type: "image/jpeg"}))
+                    }
                 }
             },
             ref: "input"

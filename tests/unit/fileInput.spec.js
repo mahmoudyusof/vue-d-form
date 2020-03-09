@@ -9,6 +9,9 @@ describe("testing file input component", () => {
             propsData: {
                 name: "img",
                 img_preview: false
+            },
+            listeners: {
+                change: onChange
             }
         })
     })
@@ -42,14 +45,15 @@ describe("testing file input component", () => {
     it("should preview image if img_preview prop is set", async () => {
         /* THIS TEST DOESN'T WORK AS IS RIGHT NOW */
         /* GONNA WORK ON IT LATER */
-        // wrapper.setProps({
-        //     img_preview: true
-        // })
-        // await wrapper.vm.$nextTick()
-        // expect(wrapper.find("img").attributes("src")).toBeFalsy()
-        // const file = new Blob(["thisissopposedtobeabase64urlencodedimage"], {type : 'image/jpeg'});
-        // wrapper.find("input").trigger
-        // await wrapper.vm.$nextTick()
-        // expect(wrapper.find("img").attributes("src")).toBeTruthy()
+        wrapper.setProps({
+            img_preview: true
+        })
+
+        await wrapper.vm.$nextTick()
+        expect(wrapper.find("img").attributes("src")).toBeFalsy()
+        wrapper.find("input").trigger("change")
+        await wrapper.vm.$nextTick()
+        expect(onChange).toHaveBeenCalled()
+        expect(wrapper.find("img").attributes("src")).toBe("")
     })
 })
