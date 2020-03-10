@@ -10,11 +10,19 @@ export default {
       required: true
     },
     value: {
-      type: [String, Number, Boolean]
+      type: [String, Number, Boolean],
+      validator(x){
+        return this.valid_val(x)
+      }
     }
   },
   model: {
     event: "change"
+  },
+  methods: {
+    valid_val(v){
+      return this.options.indexOf(v) > -1
+    }
   },
   render(h) {
     let els = [];

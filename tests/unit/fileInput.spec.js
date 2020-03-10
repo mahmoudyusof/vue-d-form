@@ -43,8 +43,6 @@ describe("testing file input component", () => {
     })
 
     it("should preview image if img_preview prop is set", async () => {
-        /* THIS TEST DOESN'T WORK AS IS RIGHT NOW */
-        /* GONNA WORK ON IT LATER */
         wrapper.setProps({
             img_preview: true
         })

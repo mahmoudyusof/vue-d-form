@@ -7,7 +7,7 @@ export default {
       default: "text",
       validator(x) {
         return (
-          ["text", "number", "textarea", "password", "email"].indexOf(x) > -1
+          ["text", "number", "textarea", "password", "email", "range"].indexOf(x) > -1
         );
       }
     },
