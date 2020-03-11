@@ -10,18 +10,23 @@ export default {
       required: true
     },
     value: {
-      type: [String, Number, Boolean],
-      validator(x){
-        return this.valid_val(x)
-      }
+      type: [String, Number, Boolean]
     }
   },
   model: {
     event: "change"
   },
-  methods: {
-    valid_val(v){
-      return this.options.indexOf(v) > -1
+  watch: {
+    value(old_val, new_val){
+      if(this.options instanceof Array && this.options.indexOf(new_val) == -1){
+        this.$emit("change", this.options[0])
+        console.log(new_val, old_val)
+      }else if(!this.options instanceof Array && this.options.keys().indexOf(new_val) === -1){
+        this.$emit("change", this.options.keys()[0])
+      }else{
+        console.log(new_val, old_val)
+        this.$emit("change", new_val)
+      }
     }
   },
   render(h) {
