@@ -52,10 +52,11 @@ describe("test radio group functionality", () => {
     expect(wrapper.emitted().change[0]).toEqual(["one"])
   })
 
-  it("should throw if value is not in options", async () => {
+  it("should throw if value is not in options", () => {
     let opts = wrapper.findAll('input[type="radio"]');
     wrapper.setProps({value: "four"})
-    await wrapper.vm.$nextTick()
-    expect(opts.at(0).element.checked).toBeTruthy()
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.emitted().change).toBeTruthy()
+    })
   })
 })
