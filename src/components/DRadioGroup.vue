@@ -13,14 +13,19 @@ export default {
       type: [String, Number, Boolean]
     }
   },
+  computed: {
+    indecies() {
+      return this.options.map(el => el.key || el);
+    }
+  },
   model: {
     event: "change"
   },
   watch: {
     value(new_val){
-      if(this.options.indexOf(new_val) === -1){
-        this.$emit("change", this.options[0])
-        this.$refs["soda__" + this.options[0]].checked = true;
+      if(this.indecies.indexOf(new_val) === -1){
+        this.$emit("change", this.options[0].key || this.options[0])
+        this.$refs["soda__" + (this.options[0].key || this.options[0])].checked = true;
       }else{
         this.$refs["soda__" + new_val].checked = true;
       }

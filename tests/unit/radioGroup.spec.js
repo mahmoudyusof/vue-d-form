@@ -53,10 +53,30 @@ describe("test radio group functionality", () => {
   })
 
   it("should throw if value is not in options", () => {
-    let opts = wrapper.findAll('input[type="radio"]');
     wrapper.setProps({value: "four"})
     wrapper.vm.$nextTick(() => {
       expect(wrapper.emitted().change).toBeTruthy()
+      expect(wrapper.emitted().change[0]).toEqual(['one'])
+    })
+  })
+
+  it("should throw if value is not in options", () => {
+    wrapper.setProps({
+      options: [{key: 1, value: "one"}, {key: 2, value: "two"}, "three"],
+      value: "four"
+    })
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.emitted().change.length).toBe(1)
+      expect(wrapper.emitted().change[0]).toEqual([1])
+    })
+    wrapper.setProps({value: "three"});
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.emitted().change.length).toBe(1)
+    })
+
+    wrapper.setProps({value: 2});
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.emitted().change.length).toBe(1)
     })
   })
 })
