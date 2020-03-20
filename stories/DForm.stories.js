@@ -16,8 +16,8 @@ export const More = () => ({
         return {
             fields: [
                 {type: "email", label: "Email:", name: "email", placeholder: "JohnDoe@gmail.com"},
+                {type: "select", options: ["male", "female"], label: "Gender", name: "gender", id: "gender"},
                 {type: "checkbox", label: "I agree", name: "agree", id: "agree"},
-                {type: "checkbox", label: "Remember me", name: "remember", id: "remember"}
             ]
         }
     },

@@ -1,10 +1,12 @@
 <script>
 import DCheckbox from "./DCheckbox";
 import DTextInput from "./DTextInput";
+import DSelect from "./DSelect";
 export default {
     components: {
         DCheckbox,
-        DTextInput
+        DTextInput,
+        DSelect
     },
     props: {
         fields: {
@@ -50,6 +52,10 @@ export default {
                         attrs: JSON.parse(JSON.stringify(field))
                     })
                 );
+            }else if(field.type === "select"){
+                fields_components.push(h("DSelect", {
+                    attrs: JSON.parse(JSON.stringify(field))
+                }))
             }
         });
 
