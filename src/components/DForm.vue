@@ -2,11 +2,13 @@
 import DCheckbox from "./DCheckbox";
 import DTextInput from "./DTextInput";
 import DSelect from "./DSelect";
+import DRadioGroup from "./DRadioGroup";
 export default {
     components: {
         DCheckbox,
         DTextInput,
-        DSelect
+        DSelect,
+        DRadioGroup
     },
     props: {
         fields: {
@@ -54,6 +56,10 @@ export default {
                 );
             }else if(field.type === "select"){
                 fields_components.push(h("DSelect", {
+                    attrs: JSON.parse(JSON.stringify(field))
+                }))
+            }else if(field.type === "radio"){
+                fields_components.push(h("DRadioGroup", {
                     attrs: JSON.parse(JSON.stringify(field))
                 }))
             }
