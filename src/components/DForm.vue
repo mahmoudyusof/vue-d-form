@@ -3,6 +3,7 @@ import DCheckbox from "./DCheckbox";
 import DTextInput from "./DTextInput";
 import DSelect from "./DSelect";
 import DRadioGroup from "./DRadioGroup";
+import DFileInput from "./DFileInput";
 export default {
     components: {
         DCheckbox,
@@ -45,23 +46,27 @@ export default {
             ) {
                 fields_components.push(
                     h("DTextInput", {
-                        attrs: JSON.parse(JSON.stringify(field))
+                        attrs: {...field}
                     })
                 );
             } else if (field.type === "checkbox") {
                 fields_components.push(
                     h("DCheckbox", {
-                        attrs: JSON.parse(JSON.stringify(field))
+                        attrs: {...field}
                     })
                 );
             }else if(field.type === "select"){
                 fields_components.push(h("DSelect", {
-                    attrs: JSON.parse(JSON.stringify(field))
+                    attrs: {...field}
                 }))
             }else if(field.type === "radio"){
                 fields_components.push(h("DRadioGroup", {
-                    attrs: JSON.parse(JSON.stringify(field))
+                    attrs: {...field}
                 }))
+            }else if(field.type === "radio"){
+                fields_components.push(h("DFileInput"), {
+                    attrs: {...field}
+                })
             }
         });
 

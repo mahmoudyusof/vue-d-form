@@ -33,7 +33,8 @@ describe("testing the whole form", () => {
                 {type: "text", label: "Name:", name: "name", placeholder: "John Doe"},
                 {type: "select", options: ["male", "female"], label: "Gender", name: "gender", id: "gender"},
                 {type: "checkbox", label: "I agree", name: "agree"},
-                {type: "radio", options: ["one", "two", "three"], name: "number"}
+                {type: "radio", options: ["one", "two", "three"], name: "number"},
+                {type: "file", label: "Upload Avatar", name: "avatar", img_preview: true}
             ]
         })
         wrapper.vm.$nextTick(() => {
@@ -51,6 +52,8 @@ describe("testing the whole form", () => {
             expect(opts.at(0).text()).toBe("male")
             expect(radioOpts.length).toBe(3)
             expect(radioOpts.at(0).attributes().name).toBe("number")
+            expect(wrapper.find("input[type='file']")).toBeTruthy()
+            expect(wrapper.find("img")).toBeTruthy()
         })
     })
 })
