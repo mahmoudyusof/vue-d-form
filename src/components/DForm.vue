@@ -1,15 +1,13 @@
 <script>
-import DCheckbox from "./DCheckbox";
-import DTextInput from "./DTextInput";
 import DSelect from "./DSelect";
-import DRadioGroup from "./DRadioGroup";
-import DFileInput from "./DFileInput";
+import DRadioGroup from './DRadioGroup'
 export default {
     components: {
-        DCheckbox,
-        DTextInput,
+        DCheckbox: () => import('./DCheckbox'),
+        DTextInput: () => import('./DTextInput'),
         DSelect,
-        DRadioGroup
+        DRadioGroup,
+        DFileInput: () => import('./DFileInput')
     },
     props: {
         fields: {
