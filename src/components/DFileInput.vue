@@ -31,15 +31,18 @@ export default {
                 ...this.$attrs
             },
             on: {
-                change: (e) => {
-                    this.$emit("change", e)
+                change: (event) => {
+                    this.$emit("change", event)
                     if(this.img_preview){
-                        var img = this.$refs.img;
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            img.setAttribute("src", e.target.result)
+                        const file = this.$refs.input.files[0];
+                        if(file && file.split("/")[0] === "image"){
+                            var img = this.$refs.img;
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                img.setAttribute("src", e.target.result)
+                            }
+                            reader.readAsDataURL(file || new Blob([""], {type: "image/jpeg"}))
                         }
-                        reader.readAsDataURL(this.$refs.input.files[0] || new Blob([""], {type: "image/jpeg"}))
                     }
                 }
             },
