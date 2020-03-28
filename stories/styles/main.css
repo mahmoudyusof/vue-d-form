@@ -1,0 +1,19 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-green {
+  background-color: rgb(0, 140, 75);
+  color: white;
+}
+.form-control{
+  border-radius: 3px;
+  border: 1px solid #aaaa;
+  box-shadow: 0 0 0 0 #000;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.form-control:focus{
+  box-shadow: 0px 0px 10px 0px rgba(0, 140, 76, 0.3);
+}

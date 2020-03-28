@@ -6,8 +6,7 @@ export default {
       required: true
     },
     value: {
-      type: String,
-      required: true
+      type: String
     },
     label: {
       type: String
@@ -15,6 +14,9 @@ export default {
   },
   model: {
     event: "change"
+  },
+  created() {
+    this.$emit("change", this.options[0].key || this.options[0]);
   },
   render(h) {
     let opt_elements = [];
