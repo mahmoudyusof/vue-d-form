@@ -10,6 +10,12 @@ export default {
     },
     label: {
       type: String
+    },
+    attrs: {
+      type: Object,
+      default: () => {
+        return {};
+      }
     }
   },
   model: {
@@ -40,7 +46,7 @@ export default {
       {
         attrs: {
           value: this.value,
-          ...this.$attrs
+          ...this.attrs
         },
         on: {
           change: e => {

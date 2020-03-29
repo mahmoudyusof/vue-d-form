@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <DSelect :options="slct_opts" v-model="selected" />
+    <DSelect :options="slct_opts" v-model="selected" class="form-control" label="Number"/>
     <DRadioGroup :options="rdo_opts" v-model="selected" name="somename"/>
     <p>{{ selected }}</p>
   </div>

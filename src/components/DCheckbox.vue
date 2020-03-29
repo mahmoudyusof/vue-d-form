@@ -7,6 +7,12 @@ export default {
     value: {
       type: Boolean,
       default: false
+    },
+    attrs: {
+      type: Object,
+      default: () => {
+        return {};
+      }
     }
   },
   model: {
@@ -18,7 +24,7 @@ export default {
       attrs: {
         type: "checkbox",
         checked: this.value,
-        ...this.$attrs
+        ...this.attrs
       },
       on: {
         change: e => {
@@ -31,7 +37,7 @@ export default {
       "label",
       {
         attrs: {
-          for: this.$attrs.id || ""
+          for: this.attrs.id || ""
         }
       },
       this.label

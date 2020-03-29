@@ -7,7 +7,7 @@ describe("testing checkbox", () => {
     wrapper = shallowMount(DCheckbox, {
       propsData: {
         label: "checkme",
-        id: "checky"
+        attrs: {id: "checky"}
       }
     });
   })

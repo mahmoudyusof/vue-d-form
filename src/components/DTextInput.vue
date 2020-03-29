@@ -20,6 +20,9 @@ export default {
     label: {
       type: String,
       default: ""
+    },
+    attrs: {
+      type: Object
     }
   },
   methods: {
@@ -34,7 +37,7 @@ export default {
         attrs: {
           type: this.type,
           value: this.value,
-          ...this.$attrs
+          ...this.attrs
         },
         on: {
           input: e => {
@@ -46,7 +49,7 @@ export default {
       element = h(
         "textarea",
         {
-          attrs: this.$attrs,
+          attrs: this.attrs,
           on: {
             input: v => {
               this.$emit("input", v);
@@ -62,7 +65,7 @@ export default {
           "label",
           {
             attrs: {
-              for: this.$attrs.id || ""
+              for: this.attrs.id || ""
             }
           },
           this.label
