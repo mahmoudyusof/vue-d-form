@@ -1,6 +1,6 @@
 {
-  "name": "d-form",
-  "version": "0.0.1",
+  "name": "vue-d-form",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -8,11 +8,14 @@
     "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-lib": "vue-cli-service build --target lib --name vue-d-form src/index.js"
   },
+  "main": "dist/vue-d-form.common.js",
   "dependencies": {
     "core-js": "^3.4.4",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-d-form": "../vue-d-form/"
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
