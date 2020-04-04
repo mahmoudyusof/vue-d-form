@@ -2,6 +2,7 @@
 // this component should support all text, email, password, number and textarea fields
 export default {
   props: {
+    // similar to html type attribute
     type: {
       type: String,
       default: "text",
@@ -13,32 +14,39 @@ export default {
         );
       }
     },
+    // when using v-model this property is bound to the state
     value: {
       type: String,
       default: ""
     },
+    // optional Label
     label: {
       type: String,
       default: ""
     },
+    // all additional html attributes in a key value configuration
     attrs: {
       type: Object
     }
   },
+  // emits an input event to update the value prop
   methods: {
     emit(v) {
       this.$emit("input", v);
     }
   },
+  // the main render function // h is a function that creates an element
   render(h) {
     let element = null;
+    // textareas use a different tag: not <input />
     if (this.type !== "textarea") {
-      element = h("input", {
+      element = h(/* tag */"input", /* props and attributes */{
         attrs: {
           type: this.type,
           value: this.value,
           ...this.attrs
         },
+        // event listeners
         on: {
           input: e => {
             this.$emit("input", e.target.value);
@@ -59,6 +67,7 @@ export default {
         [this.value, this.$slots.default]
       );
     }
+    // in case there is a label I want to wrap them in a div
     if (this.label) {
       return h("div", [
         h(
@@ -76,4 +85,7 @@ export default {
     return element;
   }
 };
+
+// the h function
+// h('tag-name', [...children], {...attributes_and_props})
 </script>

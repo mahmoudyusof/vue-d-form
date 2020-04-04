@@ -1,4 +1,9 @@
 <script>
+/*
+this file is important
+however it needs some refactoring
+TODO: Make a separate image upload component
+*/
 export default {
   props: {
     label: {
@@ -12,6 +17,7 @@ export default {
     value: {
       default: null
     },
+    // for now this will act as a flag for whether the user wants to preview the image or not
     img_preview: {
       type: Boolean,
       default: false
@@ -24,12 +30,14 @@ export default {
     }
   },
   model: {
+    // the data binding will respond to change events ... default is input
     event: "change"
   },
   render(h) {
     var elements = [];
     elements.push(
       h("input", {
+        // attributes and props
         attrs: {
           type: "file",
           value: this.value,
@@ -37,6 +45,7 @@ export default {
           style: "display: none !important;",
           ...this.attrs
         },
+        // lestiners
         on: {
           change: event => {
             this.$emit("change", event);
@@ -55,6 +64,7 @@ export default {
             }
           }
         },
+        // reference used by this.$refs
         ref: "input"
       })
     );
@@ -75,7 +85,7 @@ export default {
         [this.label]
       )
     );
-
+    // push the image with which you shall preview the uploaded file
     if (this.img_preview == true) {
       elements.push(
         h("img", {
