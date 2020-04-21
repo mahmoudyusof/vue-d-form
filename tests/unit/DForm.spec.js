@@ -10,11 +10,12 @@ describe("testing the whole form", () => {
           {
             type: "text",
             label: "Name:",
-            attrs: { name: "name", placeholder: "John Doe" }
+            name: "name",
+            placeholder: "John Doe",
           },
-          { type: "checkbox", label: "I agree", name: "agree" }
-        ]
-      }
+          { type: "checkbox", label: "I agree", name: "agree" },
+        ],
+      },
     });
   });
 
@@ -37,30 +38,29 @@ describe("testing the whole form", () => {
         {
           type: "text",
           label: "Name:",
-          attrs: { name: "name", placeholder: "John Doe" }
+          name: "name",
+          placeholder: "John Doe",
         },
         {
           type: "select",
           options: ["male", "female"],
           label: "Gender",
-          attrs: {
-            name: "gender",
-            id: "gender"
-          }
+          name: "gender",
+          id: "gender",
         },
-        { type: "checkbox", label: "I agree", attrs: { name: "agree" } },
+        { type: "checkbox", label: "I agree", name: "agree" },
         {
           type: "radio",
           options: ["one", "two", "three"],
-          name: "number"
+          name: "number",
         },
         {
           type: "file",
           label: "Upload Avatar",
           name: "avatar",
-          img_preview: true
-        }
-      ]
+          img_preview: true,
+        },
+      ],
     });
     wrapper.vm.$nextTick(() => {
       const textField = wrapper.find("input[type='text']");

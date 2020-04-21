@@ -1,6 +1,7 @@
 <script>
 // this component should support all text, email, password, number and textarea fields
 export default {
+  inheritAttrs: false,
   props: {
     // similar to html type attribute
     type: {
@@ -23,10 +24,6 @@ export default {
     label: {
       type: String,
       default: ""
-    },
-    // all additional html attributes in a key value configuration
-    attrs: {
-      type: Object
     }
   },
   // emits an input event to update the value prop
@@ -40,24 +37,27 @@ export default {
     let element = null;
     // textareas use a different tag: not <input />
     if (this.type !== "textarea") {
-      element = h(/* tag */"input", /* props and attributes */{
-        attrs: {
-          type: this.type,
-          value: this.value,
-          ...this.attrs
-        },
-        // event listeners
-        on: {
-          input: e => {
-            this.$emit("input", e.target.value);
+      element = h(
+        /* tag */ "input",
+        /* props and attributes */ {
+          attrs: {
+            type: this.type,
+            value: this.value,
+            ...this.$attrs
+          },
+          // event listeners
+          on: {
+            input: e => {
+              this.$emit("input", e.target.value);
+            }
           }
         }
-      });
+      );
     } else {
       element = h(
         "textarea",
         {
-          attrs: this.attrs,
+          attrs: this.$attrs,
           on: {
             input: v => {
               this.$emit("input", v);
@@ -74,7 +74,7 @@ export default {
           "label",
           {
             attrs: {
-              for: this.attrs.id || ""
+              for: this.$attrs.id || ""
             }
           },
           this.label

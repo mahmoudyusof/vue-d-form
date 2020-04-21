@@ -15,14 +15,9 @@ export default {
     },
     label: {
       type: String
-    },
-    attrs: {
-      type: Object,
-      default: () => {
-        return {};
-      }
     }
   },
+  inheritAttrs: false,
   // this will make two way binding (aka v-model) work on change event
   model: {
     event: "change"
@@ -55,7 +50,7 @@ export default {
         attrs: {
           // this is the element that should be bound with data binding
           value: this.value,
-          ...this.attrs
+          ...this.$attrs
         },
         on: {
           change: e => {

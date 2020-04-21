@@ -21,14 +21,9 @@ export default {
     img_preview: {
       type: Boolean,
       default: false
-    },
-    attrs: {
-      type: Object,
-      default: () => {
-        return {};
-      }
     }
   },
+  inheritAttrs: false,
   model: {
     // the data binding will respond to change events ... default is input
     event: "change"
@@ -43,7 +38,7 @@ export default {
           value: this.value,
           name: this.name,
           style: "display: none !important;",
-          ...this.attrs
+          ...this.$attrs
         },
         // lestiners
         on: {
@@ -74,7 +69,7 @@ export default {
         "button",
         {
           attrs: {
-            ...this.attrs
+            ...this.$attrs
           },
           on: {
             click: () => {

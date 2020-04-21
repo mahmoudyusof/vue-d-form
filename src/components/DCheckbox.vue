@@ -7,24 +7,19 @@ export default {
     value: {
       type: Boolean,
       default: false
-    },
-    attrs: {
-      type: Object,
-      default: () => {
-        return {};
-      }
     }
   },
   model: {
     event: "change"
   },
+  inheritAttrs: false,
   render(h) {
     let element = null;
     element = h("input", {
       attrs: {
         type: "checkbox",
         checked: this.value,
-        ...this.attrs
+        ...this.$attrs
       },
       on: {
         change: e => {
@@ -37,7 +32,7 @@ export default {
       "label",
       {
         attrs: {
-          for: this.attrs.id || ""
+          for: this.$attrs.id || ""
         }
       },
       this.label
