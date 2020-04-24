@@ -3,12 +3,12 @@ import "./styles/main.css";
 
 export default {
   title: "DForm",
-  component: DForm
+  component: DForm,
 };
 
 export const Default = () => ({
   components: { DForm },
-  template: `<DForm />`
+  template: `<DForm />`,
 });
 
 export const More = () => ({
@@ -20,20 +20,20 @@ export const More = () => ({
           type: "email",
           label: "Email:",
           name: "email",
-          placeholder: "JohnDoe@gmail.com"
+          placeholder: "JohnDoe@gmail.com",
         },
         {
           type: "select",
           options: ["male", "female"],
           label: "Gender",
           name: "gender",
-          id: "gender"
+          id: "gender",
         },
-        { type: "checkbox", label: "I agree", name: "agree", id: "agree" }
-      ]
+        { type: "checkbox", label: "I agree", name: "agree", id: "agree" },
+      ],
     };
   },
-  template: `<DForm class="form" :fields="JSON.parse(JSON.stringify(fields))" />`
+  template: `<DForm class="form" :fields="[...fields]" />`,
 });
 
 export const Styled = () => ({
@@ -46,21 +46,21 @@ export const Styled = () => ({
           label: "First Name:",
           name: "fname",
           placeholder: "John",
-          class: ["form-control"]
+          class: ["form-control"],
         },
         {
           type: "text",
           label: "Last Name:",
           name: "lname",
           placeholder: "Doe",
-          class: ["form-control"]
+          class: ["form-control"],
         },
         {
           type: "email",
           label: "Email:",
           name: "email",
           placeholder: "JohnDoe@gmail.com",
-          class: ["form-control"]
+          class: ["form-control"],
         },
         {
           type: "select",
@@ -68,11 +68,11 @@ export const Styled = () => ({
           label: "Gender",
           name: "gender",
           id: "gender",
-          class: ["form-control"]
+          class: ["form-control"],
         },
-        { type: "checkbox", label: "I agree", name: "agree", id: "agree" }
-      ]
+        { type: "checkbox", label: "I agree", name: "agree", id: "agree" },
+      ],
     };
   },
-  template: `<DForm :fields="JSON.parse(JSON.stringify(fields))" />`
+  template: `<DForm :fields="[...fields]" />`,
 });

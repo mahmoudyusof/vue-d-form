@@ -6,8 +6,7 @@ export default {
     DCheckbox: () => import("./DCheckbox"),
     DTextInput: () => import("./DTextInput"),
     DSelect,
-    DRadioGroup,
-    DFileInput: () => import("./DFileInput")
+    DRadioGroup
   },
   props: {
     fields: {
@@ -63,10 +62,6 @@ export default {
             attrs: { ...field }
           })
         );
-      } else if (field.type === "radio") {
-        fields_components.push(h("DFileInput"), {
-          attrs: { ...field }
-        });
       }
     });
 

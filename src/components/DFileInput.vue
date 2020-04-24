@@ -2,7 +2,7 @@
 /*
 this file is important
 however it needs some refactoring
-TODO: Make a separate image upload component
+TODO: Make a separate image upload component 
 */
 export default {
   props: {
@@ -46,7 +46,7 @@ export default {
             this.$emit("change", event);
             if (this.img_preview) {
               const file = this.$refs.input.files[0];
-              if (file && file.split("/")[0] === "image") {
+              if (file && file.type.split("/")[0] === "image") {
                 var img = this.$refs.img;
                 const reader = new FileReader();
                 reader.onload = e => {
