@@ -7,7 +7,7 @@
 ```js
 import { DTextInput } from "vue-d-form";
 export default {
-  components: { DTextInput }
+  components: { DTextInput },
 };
 ```
 
@@ -17,7 +17,8 @@ export default {
     <DTextInput
       type="text"
       v-model="name"
-      :attrs="{placeholder='John Doe', class: 'form-control'}"
+      placeholder="John Doe"
+      class="form-control"
     />
   </div>
 </template>
