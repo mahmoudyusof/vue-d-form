@@ -56,9 +56,7 @@ describe("testing the whole form", () => {
         },
         {
           type: "file",
-          label: "Upload Avatar",
           name: "avatar",
-          img_preview: true,
         },
       ],
     });
@@ -79,9 +77,7 @@ describe("testing the whole form", () => {
       expect(radioOpts.at(0).attributes().name).toBe("number");
 
       // TODO: fix file component
-
-      // expect(wrapper.contains("input[type='file']")).toBe(true);
-      // expect(wrapper.find("img").exists()).toBe(true);
+      // expect(wrapper.find('input[type="file"]').exists()).toBe(true);
     });
   });
 });

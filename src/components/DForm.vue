@@ -6,7 +6,9 @@ export default {
     DCheckbox: () => import("./DCheckbox"),
     DTextInput: () => import("./DTextInput"),
     DSelect,
-    DRadioGroup
+    DRadioGroup,
+    DFileInput: () => import("./DFileInput"),
+    DImageInput: () => import("./DImageInput")
   },
   props: {
     fields: {
@@ -59,6 +61,18 @@ export default {
       } else if (field.type === "radio") {
         fields_components.push(
           h("DRadioGroup", {
+            attrs: { ...field }
+          })
+        );
+      } else if (field.type === "file") {
+        fields_components.push(
+          h("DFileInput", {
+            attrs: { ...field }
+          })
+        );
+      } else if (field.type === "image") {
+        fields_components.push(
+          h("DImageInput", {
             attrs: { ...field }
           })
         );
