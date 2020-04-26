@@ -15,6 +15,10 @@ describe("testing the whole form", () => {
           },
           { type: "checkbox", label: "I agree", name: "agree" },
         ],
+        value: {
+          name: "",
+          agree: false,
+        },
       },
     });
   });
@@ -78,6 +82,17 @@ describe("testing the whole form", () => {
 
       // TODO: fix file component
       // expect(wrapper.find('input[type="file"]').exists()).toBe(true);
+    });
+  });
+
+  it("should allow the use of v-model directive", () => {
+    let input = wrapper.find("input[type='text']");
+    input.setValue("Mahmoud");
+    wrapper.vm.$nextTick(() => {
+      expect(wrapper.emitted().change[0][0]).toMatchObject({
+        name: "Mahmoud",
+        agree: false,
+      });
     });
   });
 });
