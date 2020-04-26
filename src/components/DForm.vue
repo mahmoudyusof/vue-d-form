@@ -11,6 +11,7 @@ export default {
     DImageInput: () => import("./DImageInput")
   },
   props: {
+    value: null,
     fields: {
       type: [Array, Object],
       default: () => [
@@ -29,6 +30,10 @@ export default {
       ]
     }
   },
+  model: {
+    event: "change"
+  },
+  // inheritAttrs: false,
   methods: {
     onSubmit(e) {
       this.$emit("submit", e);
@@ -43,37 +48,67 @@ export default {
       ) {
         fields_components.push(
           h("DTextInput", {
-            attrs: { ...field }
+            attrs: { ...field },
+            on: {
+              input: v => {
+                this.$emit("change", { ...this.value, [field.name]: v });
+              }
+            }
           })
         );
       } else if (field.type === "checkbox") {
         fields_components.push(
           h("DCheckbox", {
-            attrs: { ...field }
+            attrs: { ...field },
+            on: {
+              change: v => {
+                this.$emit("change", { ...this.value, [field.name]: v });
+              }
+            }
           })
         );
       } else if (field.type === "select") {
         fields_components.push(
           h("DSelect", {
-            attrs: { ...field }
+            attrs: { ...field },
+            on: {
+              change: v => {
+                this.$emit("change", { ...this.value, [field.name]: v });
+              }
+            }
           })
         );
       } else if (field.type === "radio") {
         fields_components.push(
           h("DRadioGroup", {
-            attrs: { ...field }
+            attrs: { ...field },
+            on: {
+              change: v => {
+                this.$emit("change", { ...this.value, [field.name]: v });
+              }
+            }
           })
         );
       } else if (field.type === "file") {
         fields_components.push(
           h("DFileInput", {
-            attrs: { ...field }
+            attrs: { ...field },
+            on: {
+              change: v => {
+                this.$emit("change", { ...this.value, [field.name]: v });
+              }
+            }
           })
         );
       } else if (field.type === "image") {
         fields_components.push(
           h("DImageInput", {
-            attrs: { ...field }
+            attrs: { ...field },
+            on: {
+              change: v => {
+                this.$emit("change", { ...this.value, [field.name]: v });
+              }
+            }
           })
         );
       }

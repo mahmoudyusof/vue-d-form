@@ -42,7 +42,7 @@ export default {
         {
           attrs: { class: "soda--preview" },
           on: {
-            click: event => {
+            click: () => {
               this.$refs.input.click();
             }
           }
