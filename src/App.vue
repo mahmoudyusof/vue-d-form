@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <DForm :fields="fields" v-model="form_data" />
+    <p>{{ form_data }}</p>
   </div>
 </template>
 <script>

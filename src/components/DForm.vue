@@ -49,6 +49,7 @@ export default {
         fields_components.push(
           h("DTextInput", {
             attrs: { ...field },
+            props: { value: this.value[field.name] },
             on: {
               input: v => {
                 this.$emit("change", { ...this.value, [field.name]: v });
@@ -60,6 +61,7 @@ export default {
         fields_components.push(
           h("DCheckbox", {
             attrs: { ...field },
+            props: { value: this.value[field.name] },
             on: {
               change: v => {
                 this.$emit("change", { ...this.value, [field.name]: v });
@@ -71,6 +73,7 @@ export default {
         fields_components.push(
           h("DSelect", {
             attrs: { ...field },
+            props: { value: this.value[field.name] },
             on: {
               change: v => {
                 this.$emit("change", { ...this.value, [field.name]: v });
@@ -82,6 +85,7 @@ export default {
         fields_components.push(
           h("DRadioGroup", {
             attrs: { ...field },
+            props: { value: this.value[field.name] },
             on: {
               change: v => {
                 this.$emit("change", { ...this.value, [field.name]: v });
@@ -93,6 +97,7 @@ export default {
         fields_components.push(
           h("DFileInput", {
             attrs: { ...field },
+            props: { value: this.value[field.name] },
             on: {
               change: v => {
                 this.$emit("change", { ...this.value, [field.name]: v });
@@ -104,6 +109,7 @@ export default {
         fields_components.push(
           h("DImageInput", {
             attrs: { ...field },
+            props: { value: this.value[field.name] },
             on: {
               change: v => {
                 this.$emit("change", { ...this.value, [field.name]: v });
