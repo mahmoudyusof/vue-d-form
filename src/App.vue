@@ -1,38 +1,31 @@
 <template>
   <div id="app">
-    <DForm :fields="fields" v-model="form_data" />
-    <p>{{ form_data }}</p>
+    <select v-model="selectedOption">
+      <option v-for="(opt, i) in allOptions" :key="i" :value="opt">{{ opt }}</option>
+    </select>
   </div>
 </template>
 <script>
 import DForm from "./components/DForm.vue";
 export default {
-  components: { DForm },
+  created() {
+    this.request().then(opts => {
+      this.allOptions = opts;
+      this.selectedOption = opts[0];
+    });
+  },
   data() {
     return {
-      fields: [
-        {
-          name: "fname",
-          type: "text",
-          placeholder: "John",
-          label: "First Name"
-        },
-        {
-          name: "lname",
-          type: "text",
-          placeholder: "Doe",
-          label: "Last Name"
-        },
-        {
-          name: "gender",
-          type: "radio",
-          options: ["Male", "Female"]
-        }
-      ],
-      form_data: {
-        fname: "Mahmoud"
-      }
+      selectedOption: "",
+      allOptions: []
     };
+  },
+  methods: {
+    request() {
+      return new Promise((resolve, reject) => {
+        resolve(["firstOption", "secondOption", "thirdOption"]);
+      });
+    }
   }
 };
 </script>
